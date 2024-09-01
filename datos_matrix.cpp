@@ -3,6 +3,7 @@
 #include <fstream>
 #include <random>
 
+// Generar una matriz con valores aleatorios
 std::vector<std::vector<int>> generateRandomMatrix(int rows, int cols) {
     std::vector<std::vector<int>> matrix(rows, std::vector<int>(cols));
     std::default_random_engine generator;
@@ -16,6 +17,7 @@ std::vector<std::vector<int>> generateRandomMatrix(int rows, int cols) {
     return matrix;
 }
 
+// Guardar matriz en un archivo
 void saveMatrixToFile(const std::vector<std::vector<int>>& matrix, const std::string& filename) {
     std::ofstream file(filename);
     if (file.is_open()) {
@@ -28,6 +30,7 @@ void saveMatrixToFile(const std::vector<std::vector<int>>& matrix, const std::st
     }
 }
 
+// Crear datasets para multiplicación de matrices
 void createMatrixDatasets() {
     std::vector<std::pair<int, int>> sizes = {{1000, 1000}, {3000, 3000}, {500, 500}, {3000, 5000}};
     

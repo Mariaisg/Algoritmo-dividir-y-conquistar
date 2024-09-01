@@ -4,12 +4,14 @@
 #include <random>
 #include <fstream>
 
+// Generar un vector con valores aleatorios
 std::vector<int> generateRandomVector(int size) {
     std::vector<int> vec(size);
     std::generate(vec.begin(), vec.end(), rand);
     return vec;
 }
 
+// Crear datasets
 void createSortDatasets() {
     std::vector<int> sizes = {5000, 10000, 25000, 50000};
     
