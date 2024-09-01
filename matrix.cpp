@@ -108,44 +108,38 @@ void timeMatrixMultiplication(std::vector<std::vector<int>> matrix) {
 }
 
 int main() {
-    std::vector<std::string> fileNames;                        // To store the names of valid matrix files
-    std::vector<std::vector<std::vector<int>>> matrices;       // To store the matrices from each file
+    std::vector<std::string> fileNames;                        
+    std::vector<std::vector<std::vector<int>>> matrices;      
 
     DIR *dir;
     struct dirent *entry;
 
-    // Open the current directory
     dir = opendir(".");
     if (dir == nullptr) {
         std::cerr << "Could not open the directory!" << std::endl;
         return 1;
     }
 
-    // Regular expression to match files with the pattern "matrix_NxM.txt"
     std::regex matrixFilePattern("matrix_(\\d+)x(\\d+)\\.txt");
 
-    // Traverse the directory to find all matching matrix files
     while ((entry = readdir(dir)) != nullptr) {
         std::string fileName = entry->d_name;
         std::smatch matches;
 
-        // Check if the file matches the matrix pattern
         if (std::regex_match(fileName, matches, matrixFilePattern)) {
-            fileNames.push_back(fileName);  // Store the file name
+            fileNames.push_back(fileName); 
 
-            int rows = std::stoi(matches[1]);  // Extract number of rows (N)
-            int cols = std::stoi(matches[2]);  // Extract number of columns (M)
+            int rows = std::stoi(matches[1]);  
+            int cols = std::stoi(matches[2]); 
 
-            // Open the file and read its contents
             std::ifstream file(fileName);
             if (!file) {
                 std::cerr << "Error opening file: " << fileName << std::endl;
                 continue;
             }
 
-            std::vector<std::vector<int>> matrix(rows, std::vector<int>(cols));  // Initialize matrix with dimensions
+            std::vector<std::vector<int>> matrix(rows, std::vector<int>(cols));  
 
-            // Read the matrix values from the file
             for (int i = 0; i < rows; ++i) {
                 for (int j = 0; j < cols; ++j) {
                     if (!(file >> matrix[i][j])) {
@@ -156,14 +150,13 @@ int main() {
                 }
             }
 
-            matrices.push_back(matrix);  // Store the matrix
+            matrices.push_back(matrix); 
             file.close();
         }
     }
 
-    closedir(dir);  // Close the directory
+    closedir(dir); 
 
-    // Output the file names and their corresponding matrices
     for (size_t i = 0; i < fileNames.size(); ++i) {
         std::cout << "ARCHIVO: " << fileNames[i] << std::endl;
         timeMatrixMultiplication(matrices[i]);
