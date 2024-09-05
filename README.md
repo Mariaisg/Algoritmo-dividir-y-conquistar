@@ -1,2 +1,1 @@
-# Algoritmo-dividir-y-conquistar
-En los archivos .zip se encuentran los archivos de texto comprimidos. El archivo datos_sort.zip contiene los datos generados para los algoritmos de ordenamiento (desordenado, ordenado, parcialmente ordenado y peor caso) con diferentes tamaños de entrada. Por otro lado, el archivo datos_matrix.zip incluye las matrices de tamaños 500x500, 1000x1000, y 3000x5000. El archivo matrix_3000x3000.zip contiene únicamente el archivo de texto de esa matriz con dicho tamaño, ya que eran demasiado grandes para subirlos todos juntos a GitHub.
+
